@@ -1,7 +1,5 @@
 package com.algafoodapi.api.service;
 
-import java.util.Optional;
-
 import com.algafoodapi.api.exception.EntidadeEmUsoException;
 import com.algafoodapi.api.exception.EntidadeNaoEncontradaException;
 import com.algafoodapi.api.model.Cozinha;
