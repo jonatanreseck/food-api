@@ -22,9 +22,23 @@ public class RestauranteSerice {
 
 
     public Restaurante adicionar(Restaurante restaurante){
-        Optional<Cozinha> cozinha = cozinhaRepository.findById(restaurante.getId());
+        Optional<Cozinha> cozinha = cozinhaRepository.findById(restaurante.getCozinha().getId());
         
-        if(cozinha.get() == null){
+        if(cozinha.isEmpty()){
+            throw new EntidadeNaoEncontradaException(
+                String.format("Não existe cadastro de cozinha com código %d", restaurante.getCozinha().getId())
+            );
+        }
+
+        restaurante.setCozinha(cozinha.get());
+
+        return restauranteRepository.save(restaurante);
+    }
+
+    public Restaurante alterar(Restaurante restaurante){
+        Optional<Cozinha> cozinha = cozinhaRepository.findById(restaurante.getCozinha().getId());
+        
+        if(cozinha.isEmpty()){
             throw new EntidadeNaoEncontradaException(
                 String.format("Não existe cadastro de cozinha com código %d", restaurante.getCozinha().getId())
             );
