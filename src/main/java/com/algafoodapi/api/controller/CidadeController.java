@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/cidade")
 public class CidadeController {
-
+// to roubando para parecer legal no github num dia de preguiça
 	@Autowired
 	private CidadeRepository cidadeRepository;
 	
